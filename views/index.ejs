@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/" method="post" class="form">
+      <input type="text" name="account" placeholder="輸入您的帳號">
+      <input type="password" name="password" placeholder="輸入您的密碼">
+      <input type="hidden" name="token" class="token" value="">
+      <input type="submit" name="send" value="登入">
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?render=前端金鑰"></script>
+    <script>
+      grecaptcha.ready(function() {
+          grecaptcha.execute('前端金鑰', {action: 'homepage'}).then(function(token) {
+            document.querySelector('.token').value = token;
+            document.querySelector('.form').style.display = "block";
+          });
+      });
+    </script>
+    <style>
+    .form{
+      display: none
+    }3
+    </style>
+  </body>
+</html>
